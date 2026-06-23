@@ -100,9 +100,13 @@
 
     <script>
         // --- GLOBAL HEADER LOGIC ---
+        /* 
+         * INSTRUCTIONS: Add `status: "current"` to any object below 
+         * to make the CURRENT tag appear next to it in the dropdown!
+         */
         const NETWORK_DATA = {
             "CREATIVITATIS": [
-                { name: "Creativitatis", url: "#", description: "Soon™" },
+                { name: "Creativitatis", url: "#", description: "Soon™", status:"current" },
                 { name: "Creativitatis Blog", url: "https://creativitatis.blog", description: "The blog - Soon™" },
             ],
             "CREEPERHUB ECOSYSTEM": [
@@ -147,7 +151,8 @@
                                     <h3 class="text-[10px] font-bold uppercase tracking-widest text-black/40 mb-4 border-b border-black/10 pb-2">${category}</h3>
                                     <ul class="space-y-3">
                                         ${sites.map(site => {
-                                            const isCurrent = currentSiteId === site.name;
+                                            // Check if it's current either by ID or by the new status property
+                                            const isCurrent = currentSiteId === site.name || site.status === 'current';
                                             return `
                                                 <li>
                                                     <a href="${isCurrent ? '#' : site.url}" class="block group ${isCurrent ? 'cursor-default' : 'hover:bg-black/5 p-2 -m-2 rounded-md'}">
